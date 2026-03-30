@@ -2,49 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Baloo 2", sans-serif;
+  font-family: "Baloo 2";
 }
-
 * ::-webkit-scrollbar {
-  width: 8px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-* ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border-radius: 10px;
-}
-
-* ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #764ba2, #667eea);
-}
-
-body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-/* Animated background particles */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(255, 177, 153, 0.3) 0%, transparent 50%);
-  animation: float 20s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-30px) rotate(120deg); }
-  66% { transform: translateY(20px) rotate(240deg); }
+  display: none;
+  background: #1c1f2c;
+  font-family: "Baloo 2";
 }
 
 main {
@@ -52,880 +15,422 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  max-width: 1200px;
+  width: 80%;
   overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  animation: slideIn 0.8s ease-out;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
 main header {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 15px 25px;
-  border-radius: 20px 20px 0 0;
+  background-color: #526e7a;
+  color: rgba(183, 214, 220, 0.5490196078);
+  padding: 7px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
+  letter-spacing: 2px;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-
-main header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
 main header div.title {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  z-index: 1;
 }
-
 main header div.title h1 {
   font-family: "Baloo 2", cursive;
-  font-size: 28px;
-  margin-left: 15px;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  animation: glow 2s ease-in-out infinite alternate;
+  font-size: 26px;
+  margin-left: 10px;
 }
-
-@keyframes glow {
-  from { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.2); }
-  to { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.4); }
-}
-
 main header button {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  border: none;
   outline: none;
   display: none;
   cursor: pointer;
-  padding: 10px;
-  border-radius: 12px;
-  color: white;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  padding: 7px;
 }
-
-main header button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
-}
-
 main div.container {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  padding: 25px;
-  border-radius: 0 0 20px 20px;
+  background-color: #1c1f2c;
+  padding: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 20px;
-  min-height: 600px;
 }
-
 main div.container div.user-window {
-  width: 380px;
+  width: 350px;
   color: white;
-  background: linear-gradient(135deg, #4a5568, #2d3748);
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  animation: fadeInLeft 0.6s ease-out;
+  background-color: #3f3f3f;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-right: 20px;
+  /* Fullscreen image styles */
+  /* Close button styles */
 }
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-main div.container div.user-window:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
 main div.container div.user-window div.user-head {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  border: 33px;
+  background-color: #526e7a;
+  border-radius: 15px;
+  /* width: 199px; */
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
-
 main div.container div.user-window div.user-head h4 {
-  background: linear-gradient(45deg, #48bb78, #38a169);
-  padding: 6px 15px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.4);
-  animation: pulse 2s infinite;
+  background-color: #32b929;
+  padding: 0 12px;
+  border-radius: 50px;
 }
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
 main div.container div.user-window div.user-head h3 {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 12px;
 }
-
-main div.container div.user-window div.user-list {
-  font-size: 13px;
-  background: linear-gradient(135deg, #4a5568, #2d3748);
-  border-radius: 12px;
-  padding: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
 main div.container div.user-window div.user-list p {
-  font-size: 13px;
+  font-size: px;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   overflow-wrap: break-word;
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  transition: all 0.3s ease;
 }
-
-main div.container div.user-window div.user-list p:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
+main div.container div.user-window div.user-list {
+  font-size: 12px;
+  background-color: #313334;
+  /* border: 22px black; */
+  border-radius: 11px;
+  padding: 6px;
 }
-
+@media (max-width: 396px) {
+  main div.container div.user-window div.user-list p {
+    font-size: 9px;
+  }
+  main div.container div.user-window div.user-list {
+    font-size: 13px;
+    background-color: #313334;
+    /* border: 22px black; */
+    border-radius: 11px;
+    padding: 6px;
+  }
+  main div.container div.user-window div.user-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 33px;
+    background-color: #526e7a;
+    border-radius: 15px;
+    /* width: 199px; */
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  main div.container div.user-window div.user-head h4 {
+    background-color: #32b929;
+    padding: 0 4px;
+    border-radius: 50px;
+    font-size: 10px;
+  }
+  main div.container div.user-window div.user-head h3 {
+    font-size: 9px;
+  }
+}
 main div.container div.user-window .qrcode {
   display: grid;
   text-align: center;
-  padding: 25px;
-  margin-top: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #4a5568, #2d3748);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  justify-content: center;
+  padding: 20px;
+  margin-top: 190px;
+  border-radius: 8px;
+  box-shadow: 11px 8px 4px 2px rgba(0, 0, 0, 0.1);
+  background-color: #2f2f2f;
+  /* position: relative; */
+  width: -moz-max-content;
+  width: max-content;
+  left: -12px;
+  /* display: grid; */
+  /* justify-content: center; */
   align-items: center;
-  transition: all 0.3s ease;
+  justify-content: center;
+  width: auto;
 }
-
-main div.container div.user-window .qrcode:hover {
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
 main div.container div.user-window #join {
-  font-size: 18px;
+  font-size: 22px;
   font-family: "Baloo 2";
-  font-weight: 600;
-  margin-bottom: 15px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  top: -10px;
+  position: relative;
 }
-
 main div.container div.user-window img.qrimage {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   cursor: zoom-in;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  border-radius: 4px;
 }
-
-main div.container div.user-window img.qrimage:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
 main div.container div.user-window .fullscreen {
-  display: none;
+  display: none; /* Hidden by default */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  z-index: 1000; /* Make sure it's on top */
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.3s ease;
+  transition: opacity 0.3s ease;
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 main div.container div.user-window #fullscreen-img {
-  max-width: 400px;
+  max-width: 280px;
   max-height: 90%;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  animation: zoomIn 0.3s ease;
+  transition: 0.5s ease-in-out;
 }
-
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 main div.container div.user-window .closebtn {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
   font-weight: bold;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
-
-main div.container div.user-window .closebtn:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+@media (max-width: 453px) {
+  main div.container div.user-window #join {
+    font-size: 13px;
+    font-family: "Baloo 2";
+    top: -9px;
+    position: relative;
+    background-color: #9e2727;
+    padding: 3px;
+    border-radius: 12px;
+  }
+  main div.container div.user-window img.qrimage {
+    height: 35px;
+    width: 35px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
+    /* margin-right: 8px; */
+    padding-right: -2px;
+    position: relative;
+    left: -3px;
+  }
 }
-
 main div.container div.chat-window {
   width: 100%;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #4a5568, #2d3748);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  animation: fadeInRight 0.6s ease-out;
+  border-radius: 10px;
+  background-color: #3f3f3f;
 }
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 main div.container div.chat-window div.chats {
   height: 65vh;
-  padding: 25px;
+  padding: 20px;
   overflow-y: auto;
-  background: linear-gradient(135deg, #2d3748, #4a5568);
 }
-
 main div.container div.chat-window div.chats div.user-join {
-  font-size: 12px;
-  color: white;
-  background: linear-gradient(45deg, #48bb78, #38a169);
-  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #3f3f3f;
+  background-color: aliceblue;
+  border-radius: 53px;
+  width: -moz-max-content;
   width: max-content;
-  margin: 0 auto 15px;
-  padding: 8px 16px;
-  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
-  animation: bounceIn 0.5s ease;
+  margin: 0 auto;
+  padding: 4px;
+  margin-bottom: 12px;
 }
-
-@keyframes bounceIn {
-  0% { transform: scale(0.3); opacity: 0; }
-  50% { transform: scale(1.05); }
-  70% { transform: scale(0.9); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
 main div.container div.chat-window div.chats #joined {
-  font-size: 12px;
+  font-size: 12.4px;
 }
-
 main div.container div.chat-window div.message {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 12px 16px;
-  max-width: 70%;
-  margin-bottom: 20px;
-  border-radius: 18px 18px 4px 18px;
+  color: #3f3f3f;
+  /* background-color: #1c1f2c; */
+  color: rgba(255, 255, 255, 0.6705882353);
+  background-color: #252837;
+  padding: 0px 22px;
+  max-width: 189px;
+  margin-bottom: 15px;
+  border-radius: 4px 4px 2px 5px;
+  margin-top: 35px;
+  width: -moz-fit-content;
   width: fit-content;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-  animation: slideInMessage 0.4s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  word-wrap: break-word;
-  clear: both;
+  max-width: 269px;
+  padding-right: 0px;
 }
-
-@keyframes slideInMessage {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-main div.container div.chat-window div.message:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-main div.container div.chat-window div.message::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-  z-index: 0;
-}
-
-main div.container div.chat-window div.message:hover::before {
-  left: 100%;
-}
-
-main div.container div.chat-window div.message #user-name {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 4px;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
 main div.container div.chat-window div.message p {
-  font-size: 14px;
+  font-size: 13px;
   overflow-wrap: break-word;
-  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  padding-top: 4px;
+  /* display: grid; */
+  display: flex;
+  /* justify-content: left; */
+  /* align-content: start; */
+  position: relative;
+  left: -18px;
+  margin-left: auto;
+  text-align: left;
   font-family: "Baloo 2";
-  line-height: 1.5;
-  margin: 0;
-  position: relative;
-  z-index: 2;
+  padding: 0px;
 }
-
 main div.container div.chat-window div.message .timestamp {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: right;
-  margin-top: 6px;
+  font-size: 7px;
+  color: #cfc7c7;
+  margin-left: 10px;
+  padding-bottom: 0px;
   position: relative;
-  z-index: 2;
-  font-style: italic;
+  left: -4px;
+  top: 0px;
+  display: grid;
+  justify-content: end;
 }
-
+main div.container div.chat-window div.message #user-name {
+  position: relative;
+  left: -20px;
+  top: -22px;
+}
 main div.container div.chat-window div.outgoing {
   margin-left: auto;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  border-radius: 18px 18px 18px 4px;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-  clear: both;
-  float: right;
-}
-
-main div.container div.chat-window div.outgoing:hover {
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-}
-
-main div.container div.chat-window div.outgoing::before {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  z-index: 0;
-}
-
-main div.container div.chat-window div.outgoing #user_name {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 4px;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-main div.container div.chat-window div.outgoing p {
-  font-size: 14px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  font-family: "Baloo 2";
-  line-height: 1.5;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-main div.container div.chat-window div.outgoing .timestamp {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.6);
+  color: white;
+  background-color: #526e7a;
+  border-radius: 4px 10px 0px 4px;
   text-align: right;
-  margin-top: 6px;
-  position: relative;
-  z-index: 2;
-  font-style: italic;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-right: 0px;
 }
-
+main div.container div.chat-window div.outgoing .timestamp {
+  justify-content: end;
+  font-size: 7px;
+  color: #cfc7c7;
+  margin-left: 10px;
+  padding-bottom: 0px;
+  position: relative;
+  bottom: -3px;
+  position: relative;
+  left: -2px;
+  top: 0px;
+  display: grid;
+}
+main div.container div.chat-window div.outgoing p {
+  padding-bottom: 0px;
+  font-size: 13px;
+  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  padding-top: 0px;
+  /* display: grid; */
+  display: flex;
+  /* justify-content: left; */
+  /* align-content: start; */
+  position: relative;
+  left: -18px;
+  margin-left: auto;
+  text-align: left;
+  padding-left: 5px;
+  font-family: "Baloo 2";
+}
+main div.container div.chat-window div.outgoing #user_name {
+  position: relative;
+  left: -3px;
+  top: -20px;
+}
 main div.container div.user-input {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  padding: 20px 25px;
-  background: linear-gradient(135deg, #2d3748, #4a5568);
-  border-radius: 0 0 16px 16px;
+  padding: 20px;
 }
-
 main div.container div.user-input input {
   font-size: 16px;
-  background: white;
-  padding: 15px 20px;
+  background-color: white;
+  padding: 3px 16px;
   outline: none;
   border: none;
   width: 100%;
-  border-radius: 25px 0 0 25px;
-  font-family: "Baloo 2";
-  transition: all 0.3s ease;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 50px 0 0 50px;
+  overflow-wrap: break-word;
 }
-
-main div.container div.user-input input:focus {
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(102, 126, 234, 0.3);
-}
-
 main div.container div.user-input button {
   font-size: 16px;
   font-weight: 600;
-  padding: 15px 25px;
+  padding: 5px 15px;
   border: none;
   outline: none;
   letter-spacing: 0.5px;
   color: white;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 0 25px 25px 0;
+  background-color: #262222;
+  border-radius: 0 50px 50px 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Baloo 2";
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-main div.container div.user-input button:hover {
-  background: linear-gradient(135deg, #764ba2, #667eea);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+@media screen and (max-width: 900px) {
+  main {
+    width: 95%;
+  }
+  main header button {
+    display: block;
+  }
+  main div.container div.user-window {
+    position: absolute;
+    top: 0;
+    left: 144px;
+    width: 100%;
+    border-radius: 0 0 13px 13px;
+    background-color: #3a4750;
+    height: -moz-max-content;
+    height: max-content;
+    z-index: 11;
+    box-shadow: 0 15px 23px -17px black;
+    padding-bottom: 0;
+    display: none;
+    width: 30%;
+    width: 31px;
+    margin-top: 85px;
+    cursor: pointer;
+    width: -webkit-fill-available;
+    padding-left: 7px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    padding-right: 7px;
+    /* width: 105px; */
+    width-left: 3px;
+  }
+  main div.chat-window div.chats div.message {
+    max-width: 300px;
+  }
 }
-
-main div.container div.user-input button:active {
-  transform: translateY(0);
-}
-
 #user_name {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: "Baloo 2";
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  margin: 0;
+  margin-bottom: -16px;
+  font: 12px;
+  top: -20px;
   position: relative;
-  z-index: 2;
+  /* left: 14px; */
+  /* bottom: 66px; */
+  color: white;
+  left: -20px;
+  padding: -2px;
+  font-weight: bolder;
+  font-size: 14px;
+  font-family: "Baloo 2";
 }
 
 #unique {
   margin-bottom: 4px;
   font-style: normal;
   font-family: "Baloo 2";
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 1024px) {
-  main {
-    width: 92%;
-  }
-  
-  main div.container {
-    padding: 20px;
-    gap: 15px;
-  }
-  
-  main div.container div.user-window {
-    width: 320px;
-    min-width: 280px;
-  }
-  
-  main div.container div.chat-window div.message {
-    max-width: 65%;
-  }
-  
-  main div.container div.chat-window div.outgoing {
-    max-width: 65%;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  main {
-    width: 95%;
-    margin: 10px auto;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-     display: none;
-  }
-  
-  body {
-    padding: 10px;
-    overflow-y: auto;
-  }
-  
-  main header button {
-    display: block;
-  }
-  
-  main div.container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-    min-height: auto;
-  }
-  
-  main div.container div.user-window {
-    width: 100%;
-    position: relative;
-    animation: none;
-    margin-bottom: 15px;
-  }
-  
-  main div.container div.chat-window {
-    animation: none;
-    width: 100%;
-  }
-  
-  main div.container div.chat-window div.chats {
-    height: 50vh;
-    padding: 20px;
-  }
-  
-  main div.container div.chat-window div.message {
-    max-width: 80%;
-    margin-bottom: 15px;
-  }
-  
-  main div.container div.chat-window div.outgoing {
-    max-width: 80%;
-  }
-  
-  main div.container div.user-input {
-    padding: 15px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  main div.container div.user-input input {
-    border-radius: 20px;
-    min-width: 0;
-    flex: 1;
-  }
-  
-  main div.container div.user-input button {
-    border-radius: 20px;
-    padding: 12px 20px;
-    min-width: 80px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  main {
-    width: 98%;
-    border-radius: 15px;
-  }
-  
-  main header {
-    padding: 12px 20px;
-    border-radius: 15px 15px 0 0;
-  }
-  
-  main header div.title h1 {
-    font-size: 22px;
-    margin-left: 10px;
-  }
-  
-  main div.container {
-    padding: 12px;
-    border-radius: 0 0 15px 15px;
-  }
-  
-  main div.container div.user-window {
-    padding: 15px;
-    border-radius: 12px;
-  }
-  
-  main div.container div.user-window .qrcode {
-    padding: 20px;
-    margin-top: 15px;
-  }
-  
-  main div.container div.user-window #join {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-  
-  main div.container div.user-window img.qrimage {
-    height: 100px;
-    width: 100px;
-  }
-  
-  main div.container div.chat-window {
-    border-radius: 12px;
-  }
-  
-  main div.container div.chat-window div.chats {
-    height: 45vh;
-    padding: 15px;
-  }
-  
-  main div.container div.chat-window div.message {
-    max-width: 85%;
-    padding: 10px 14px;
-    margin-bottom: 12px;
-    font-size: 13px;
-  }
-  
-  main div.container div.chat-window div.outgoing {
-    max-width: 85%;
-    padding: 10px 14px;
-  }
-  
-  main div.container div.user-input {
-    padding: 12px;
-    flex-direction: row;
-  }
-  
-  main div.container div.user-input input {
-    font-size: 14px;
-    padding: 12px 16px;
-  }
-  
-  main div.container div.user-input button {
-    font-size: 14px;
-    padding: 12px 18px;
-  }
-}
-
-@media screen and (max-width: 453px) {
-  main {
-    width: 100%;
-    margin: 5px auto;
-    border-radius: 12px;
-  }
-  
-  main header {
-    padding: 10px 15px;
-  }
-  
-  main header div.title h1 {
-    font-size: 20px;
-    margin-left: 8px;
-  }
-  
-  main div.container {
-    padding: 10px;
-  }
-  
-  main div.container div.user-window {
-    padding: 12px;
-  }
-  
-  main div.container div.user-window div.user-head {
-    padding: 8px;
-    margin-bottom: 12px;
-  }
-  
-  main div.container div.user-window div.user-head h4 {
-    padding: 4px 8px;
-    font-size: 10px;
-  }
-  
-  main div.container div.user-window div.user-head h3 {
-    font-size: 11px;
-  }
-  
-  main div.container div.user-window div.user-list {
-    padding: 10px;
-  }
-  
-  main div.container div.user-window div.user-list p {
-    font-size: 11px;
-    margin-bottom: 8px;
-    padding: 6px;
-  }
-  
-  main div.container div.user-window .qrcode {
-    padding: 15px;
-    margin-top: 10px;
-  }
-  
-  main div.container div.user-window #join {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  main div.container div.user-window img.qrimage {
-    height: 80px;
-    width: 80px;
-  }
-  
-  main div.container div.chat-window div.chats {
-    height: 40vh;
-    padding: 12px;
-  }
-  
-  main div.container div.chat-window div.message {
-    max-width: 90%;
-    padding: 8px 12px;
-    margin-bottom: 10px;
-    border-radius: 15px 15px 3px 15px;
-  }
-  
-  main div.container div.chat-window div.message p {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-  
-  main div.container div.chat-window div.message #user-name {
-    font-size: 10px;
-    margin-bottom: 3px;
-  }
-  
-  main div.container div.chat-window div.message .timestamp {
-    font-size: 8px;
-    margin-top: 4px;
-  }
-  
-  main div.container div.chat-window div.outgoing {
-    max-width: 90%;
-    padding: 8px 12px;
-    border-radius: 15px 15px 15px 3px;
-  }
-  
-  main div.container div.chat-window div.outgoing p {
-    font-size: 12px;
-  }
-  
-  main div.container div.chat-window div.outgoing #user_name {
-    font-size: 10px;
-  }
-  
-  main div.container div.chat-window div.outgoing .timestamp {
-    font-size: 8px;
-  }
-  
-  main div.container div.user-input {
-    padding: 10px;
-    gap: 8px;
-  }
-  
-  main div.container div.user-input input {
-    font-size: 13px;
-    padding: 10px 14px;
-  }
-  
-  main div.container div.user-input button {
-    font-size: 13px;
-    padding: 10px 15px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  main div.container div.chat-window div.message {
-    max-width: 95%;
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-  
-  main div.container div.chat-window div.outgoing {
-    max-width: 95%;
-    padding: 6px 10px;
-  }
-  
-  main div.container div.user-input {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  main div.container div.user-input input {
-    border-radius: 20px;
-    width: 100%;
-  }
-  
-  main div.container div.user-input button {
-    border-radius: 20px;
-    width: 100%;
-  }
-}
-
-/* Custom loading animation for messages */
-.message-loading {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 15px 20px;
-}
-
-.message-loading::after {
-  content: '';
-  display: flex;
-  gap: 3px;
-}
-
-.message-loading::after {
-  content: '⚫ ⚫ ⚫';
-  animation: typingDots 1.5s infinite;
-  font-size: 8px;
-}
-
-@keyframes typingDots {
-  0%, 60%, 100% { opacity: 0.3; }
-  30% { opacity: 1; }
-}
+}/*# sourceMappingURL=styles.css.map */

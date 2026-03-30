@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════
+   MOOD FEATURE STYLES  —  mood.css
+   Add <link rel="stylesheet" href="styles/mood.css">
+   in index.html <head> after styles.css
+   ═══════════════════════════════════════════════ */
+
+/* ── Mood Bar ──────────────────────────────────── */
+.mood-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px 4px;
+    background-color: #2a2d3a;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
+}
+
+.mood-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    font-family: "Baloo 2";
+    text-transform: uppercase;
+}
+
+.mood-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── Mood Pill Buttons ──────────────────────────── */
+.mood-pill {
+    font-family: "Baloo 2";
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    outline: none;
+}
+
+.mood-pill:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+/* Active state per mood — each gets its own accent color */
+.mood-pill[data-mood="funny"].active        { background:#f59e0b22; border-color:#f59e0b; color:#fbbf24; }
+.mood-pill[data-mood="professional"].active { background:#3b82f622; border-color:#3b82f6; color:#60a5fa; }
+.mood-pill[data-mood="romantic"].active     { background:#ec489922; border-color:#ec4899; color:#f472b6; }
+.mood-pill[data-mood="hype"].active         { background:#ef444422; border-color:#ef4444; color:#f87171; }
+.mood-pill[data-mood="cool"].active         { background:#06b6d422; border-color:#06b6d4; color:#22d3ee; }
+.mood-pill[data-mood="sad"].active          { background:#6366f122; border-color:#6366f1; color:#818cf8; }
+.mood-pill[data-mood="savage"].active       { background:#dc262622; border-color:#dc2626; color:#f87171; }
+.mood-pill[data-mood="wholesome"].active    { background:#10b98122; border-color:#10b981; color:#34d399; }
+
+/* ── Send Button: Mood Active State ─────────────── */
+#user-send.mood-active {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+    letter-spacing: 0.5px;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+    50%       { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); }
+}
+
+/* ── Loading Spinner ─────────────────────────────── */
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Mood Badge on Messages ──────────────────────── */
+.mood-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    font-family: "Baloo 2";
+}
+
+/* ── Preview Modal Overlay ───────────────────────── */
+.mood-preview-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Preview Box ─────────────────────────────────── */
+.mood-preview-box {
+    background: #1e2130;
+    border-radius: 16px;
+    padding: 24px;
+    width: min(420px, 92vw);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.mood-preview-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.mood-preview-header span:first-child {
+    font-size: 24px;
+}
+
+.mood-preview-header span:last-child {
+    font-family: "Baloo 2";
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.3px;
+}
+
+/* Original & Enhanced sections */
+.mood-preview-original,
+.mood-preview-enhanced {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+}
+
+.mood-preview-original {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.mood-preview-enhanced {
+    background: rgba(124, 58, 237, 0.12);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+}
+
+.mood-preview-original label,
+.mood-preview-enhanced label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 5px;
+    font-family: "Baloo 2";
+}
+
+.mood-preview-enhanced label {
+    color: #a78bfa;
+}
+
+.mood-preview-original p,
+.mood-preview-enhanced p {
+    font-family: "Baloo 2";
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+/* ── Preview Action Buttons ──────────────────────── */
+.mood-preview-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.mood-preview-actions button {
+    flex: 1;
+    font-family: "Baloo 2";
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    letter-spacing: 0.3px;
+    min-width: 90px;
+}
+
+#btn-send-enhanced {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+}
+#btn-send-enhanced:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+}
+
+#btn-send-original {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+#btn-send-original:hover {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+}
+
+#btn-cancel-preview {
+    background: transparent;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+    flex: 0 0 auto;
+}
+#btn-cancel-preview:hover {
+    color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* ── Responsive tweaks ───────────────────────────── */
+@media screen and (max-width: 900px) {
+    .mood-bar {
+        padding: 6px 12px 4px;
+    }
+    .mood-pill {
+        font-size: 10.5px;
+        padding: 2px 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mood-label { display: none; }
+    .mood-pill  { font-size: 10px; padding: 2px 7px; }
+}

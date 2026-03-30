@@ -6,84 +6,112 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/styles.css">   
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>WebChat</title>
 </head>
 <body style="background-color:#2d3032;">
 
-    <main>
-        <header>
-            <div class="title">
-                <img src="icons\chat.png" width="50px">     
-                <h1>WEB CHAT..</h1>
-            </div>
-            <button type="button" onclick="show_hide()">
-                <img src="icons\message.png" width="50px">
-        
-            </button>
-        </header>
-    
+<main>
+    <header>
+        <div class="title">
+            <img src="icons/chat.png" width="50px">
+            <h1>WEB CHAT..</h1>
+        </div>
+        <button type="button" onclick="show_hide()">
+            <img src="icons/message.png" width="50px">
+        </button>
+    </header>
+
     <div class="container">
+        <!-- ── Sidebar ── -->
         <div class="user-window">
             <div class="user-head">
                 <h3>People</h3>
-                <h4 class="users-count">3</h4>
+                <h4 class="users-count">0</h4>
             </div>
-            <div class="user-list">
-            </div>
+            <div class="user-list"></div>
 
             <div class="qrcode">
                 <h1 id="join">Join the Chat</h1>
-
                 <div class="image-container">
-                    <img src="icons\qrcode.png" alt="QR Code" class="qrimage" onclick="openFullscreen(this)">
+                    <img src="icons/qrcode.png" alt="QR Code" class="qrimage" onclick="openFullscreen(this)">
                 </div>
-
-
                 <div id="fullscreen" class="fullscreen" onclick="closeFullscreen()">
                     <span class="closebtn">&times;</span>
-                    <img id="fullscreen-img" src="icons\qrcode.png" alt="Fullscreen Image">
+                    <img id="fullscreen-img" src="icons/qrcode.png" alt="Fullscreen Image">
                 </div>
-
-                
-              
-                
             </div>
-
-
-
-        
-            
-            
-
         </div>
-        
-        <div class="chat-window">
-            <div class="chats">
 
+        <!-- ── Chat Window ── -->
+        <div class="chat-window">
+            <div class="chats"></div>
+
+            <!-- ✨ MOOD BAR -->
+            <div class="mood-bar">
+                <span class="mood-label">✨ Mood</span>
+                <div class="mood-pills">
+                    <button class="mood-pill" data-mood="funny"        title="Funny">😂 Funny</button>
+                    <button class="mood-pill" data-mood="professional" title="Professional">💼 Pro</button>
+                    <button class="mood-pill" data-mood="romantic"     title="Romantic">💕 Romantic</button>
+                    <button class="mood-pill" data-mood="hype"         title="Hype">🔥 Hype</button>
+                    <button class="mood-pill" data-mood="cool"         title="Cool">😎 Cool</button>
+                    <button class="mood-pill" data-mood="sad"          title="Sad">😢 Sad</button>
+                    <button class="mood-pill" data-mood="savage"       title="Savage">🗡️ Savage</button>
+                    <button class="mood-pill" data-mood="wholesome"    title="Wholesome">🌸 Wholesome</button>
+                </div>
             </div>
+
+            <!-- Input Row -->
             <div class="user-input">
-                <input id="user-msg" type="text" placeholder="Say Something..." >
-                <button type="button" id="user-send">SEND</button>
+                <input id="user-msg" type="text" placeholder="Say Something...">
+                <button type="button" id="user-send">
+                    <span id="send-label">SEND</span>
+                    <span id="send-spinner" class="spinner" style="display:none;"></span>
+                </button>
             </div>
         </div>
     </div>
 </main>
 
+<!-- Mood Enhanced Preview Modal -->
+<div id="mood-preview-overlay" class="mood-preview-overlay" style="display:none;">
+    <div class="mood-preview-box">
+        <div class="mood-preview-header">
+            <span id="mood-preview-emoji"></span>
+            <span id="mood-preview-title">AI Enhanced Message</span>
+        </div>
+        <div class="mood-preview-original">
+            <label>Original</label>
+            <p id="preview-original-text"></p>
+        </div>
+        <div class="mood-preview-enhanced">
+            <label>✨ Enhanced</label>
+            <p id="preview-enhanced-text"></p>
+        </div>
+        <div class="mood-preview-actions">
+            <button id="btn-send-enhanced">Send Enhanced ✨</button>
+            <button id="btn-send-original">Send Original</button>
+            <button id="btn-cancel-preview">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <script>
-    var uwindow=document.querySelector('.user-window');
-    function show_hide()
-    {
-        if(uwindow.style.display=="none")
-    {
-       uwindow.style.display="block"; 
+    var uwindow = document.querySelector('.user-window');
+    function show_hide() {
+        uwindow.style.display = (uwindow.style.display === "none") ? "block" : "none";
     }
-    else{
-        uwindow.style.display="none";
+    function openFullscreen(img) {
+        document.getElementById('fullscreen-img').src = img.src;
+        document.getElementById('fullscreen').style.display = 'flex';
     }
+    function closeFullscreen() {
+        document.getElementById('fullscreen').style.display = 'none';
     }
 </script>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/client.js"></script>
 </body>
-</html>  
+</html>
