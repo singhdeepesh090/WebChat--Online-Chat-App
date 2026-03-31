@@ -1,6 +1,6 @@
 const socket = io();
 
-// ── DOM refs ──────────────────────────────────────────────────────────────────
+
 const chats       = document.querySelector(".chats");
 const user_list   = document.querySelector(".user-list");
 const users_count = document.querySelector(".users-count");
@@ -9,7 +9,7 @@ const user_msg    = document.querySelector("#user-msg");
 const sendLabel   = document.getElementById("send-label");
 const sendSpinner = document.getElementById("send-spinner");
 
-// Mood UI
+
 const moodPills          = document.querySelectorAll(".mood-pill");
 const moodOverlay        = document.getElementById("mood-preview-overlay");
 const previewOriginalEl  = document.getElementById("preview-original-text");
@@ -20,7 +20,7 @@ const btnSendEnhanced    = document.getElementById("btn-send-enhanced");
 const btnSendOriginal    = document.getElementById("btn-send-original");
 const btnCancelPreview   = document.getElementById("btn-cancel-preview");
 
-// ── State ─────────────────────────────────────────────────────────────────────
+
 let username;
 let activeMood = null;
 
@@ -35,14 +35,14 @@ const moodMeta = {
     wholesome:    { emoji: "🌸", label: "Wholesome" }
 };
 
-// ── Username prompt ───────────────────────────────────────────────────────────
+
 do {
     username = prompt("Enter Your Name:");
 } while (!username);
 
 socket.emit("new-user-joined", username);
 
-// ── Socket events ─────────────────────────────────────────────────────────────
+
 socket.on('user-connected', (name) => userJoinLeft(name, 'joined'));
 socket.on('user-disconnected', (user) => userJoinLeft(user, 'left'));
 
@@ -61,7 +61,7 @@ socket.on('message', (data) => {
     appendMessage(data, 'incoming');
 });
 
-// ── Join / Left notification ──────────────────────────────────────────────────
+
 function userJoinLeft(name, status) {
     const div = document.createElement("div");
     div.classList.add('user-join');
@@ -70,7 +70,7 @@ function userJoinLeft(name, status) {
     chats.scrollTop = chats.scrollHeight;
 }
 
-// ── Mood pill toggle ──────────────────────────────────────────────────────────
+
 moodPills.forEach(pill => {
     pill.addEventListener('click', () => {
         const mood = pill.dataset.mood;
@@ -99,24 +99,24 @@ function updateSendButton(hasMood) {
     }
 }
 
-// ── Send / Enhance ────────────────────────────────────────────────────────────
+// ── Send / Enhance
 async function handleSend() {
     const text = user_msg.value.trim();
     if (!text) return;
 
     if (activeMood) {
-        // Show loading state
+        
         sendLabel.style.display = 'none';
         sendSpinner.style.display = 'inline-block';
         msg_send.disabled = true;
 
         try {
             const enhanced = await enhanceMessage(text, activeMood);
-            // Show preview modal
+           
             showPreview(text, enhanced, activeMood);
         } catch (err) {
             console.error('Enhancement failed:', err);
-            // Fallback: just send original
+          
             sendMessage(text, activeMood);
         } finally {
             sendLabel.style.display = 'inline';
@@ -153,7 +153,7 @@ function sendMessage(text, mood) {
     user_msg.value = '';
 }
 
-// ── Preview Modal ─────────────────────────────────────────────────────────────
+
 function showPreview(original, enhanced, mood) {
     const meta = moodMeta[mood];
     moodPreviewEmoji.textContent = meta.emoji;
@@ -162,7 +162,7 @@ function showPreview(original, enhanced, mood) {
     previewEnhancedEl.textContent = enhanced;
     moodOverlay.style.display = 'flex';
 
-    // Wire up buttons (clone to clear old listeners)
+   
     const newSendEnh = btnSendEnhanced.cloneNode(true);
     const newSendOri = btnSendOriginal.cloneNode(true);
     const newCancel  = btnCancelPreview.cloneNode(true);
@@ -186,12 +186,12 @@ function closePreview() {
     user_msg.value = '';
 }
 
-// Close preview on overlay background click
+
 moodOverlay.addEventListener('click', (e) => {
     if (e.target === moodOverlay) closePreview();
 });
 
-// ── Append message to chat ────────────────────────────────────────────────────
+// ── Append message to chat
 function appendMessage(data, status) {
     const div = document.createElement('div');
     div.classList.add('message', status);
@@ -211,7 +211,7 @@ function appendMessage(data, status) {
     chats.scrollTop = chats.scrollHeight;
 }
 
-// ── Keyboard shortcut ─────────────────────────────────────────────────────────
+// ── Keyboard shortcut
 user_msg.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
