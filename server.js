@@ -7,17 +7,15 @@ const server = http.createServer(app);
 const port = process.env.PORT || 7860;
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.json()); // ← needed to parse JSON body for /api/enhance
+app.use(express.json()); 
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-// ─────────────────────────────────────────────
-//  MOOD ENHANCE ENDPOINT  (calls Gemini API)
-// ─────────────────────────────────────────────
-const GEMINI_API_KEY = process.env.AIzaSyBUmtNpbs_o1IOVjKoItC8WDiWz_w6Nhys;
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${"AIzaSyBUmtNpbs_o1IOVjKoItC8WDiWz_w6Nhys"}`;
+
+const GEMINI_API_KEY = process.env.API_Key;
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${"API_Key"}`;
 
 app.post('/api/enhance', async (req, res) => {
     const { message, mood } = req.body;
@@ -79,9 +77,7 @@ app.post('/api/enhance', async (req, res) => {
     }
 });
 
-// ─────────────────────────────────────────────
-//  SOCKET.IO  (unchanged real-time chat logic)
-// ─────────────────────────────────────────────
+
 const io = require("socket.io")(server);
 var users = {};
 
@@ -102,7 +98,7 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("message", {
             user: data.user,
             msg: data.msg,
-            mood: data.mood || null,   // ← forward mood tag to receivers
+            mood: data.mood || null,  
             time: new Date().toLocaleTimeString([], {
                 hour: '2-digit', minute: '2-digit', hour12: true
             }).toLowerCase()
